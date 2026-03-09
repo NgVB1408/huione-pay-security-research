@@ -53,13 +53,16 @@ except ImportError:
 # CONSTANTS
 # ============================================================
 
-HUIONE_AES_KEY = b"keyhead_project_xhui_one_keytail"
+# AES key loaded from environment — extracted from libapp.so static analysis
+# Set HUIONE_AES_KEY env var before use (see VULNERABILITY_REPORT.md Finding #1)
+_key_str = os.environ.get("HUIONE_AES_KEY", "")
+HUIONE_AES_KEY = (_key_str.encode()[:32].ljust(32, b'\x00')) if _key_str else b'\x00' * 32
 
-# API Server endpoints
+# API Server endpoints (see infrastructure-proof/ for live evidence)
 SERVERS = {
-    "primary": "https://app.hh3721.com/app/foundation-server",
-    "direct_ip": "https://8.217.236.122:19003/app/foundation-server",
-    "direct_ip_old": "https://23.248.236.82:19003/app/foundation-server",
+    "primary":    "https://app.hh3721.com/app/foundation-server",
+    "direct_ip":  "https://<REDACTED>:19003/app/foundation-server",  # See private evidence pack
+    "direct_ip_b": "https://<REDACTED>:19003/app/foundation-server", # See private evidence pack
 }
 
 # Dynamic IP config source (app fetches on startup)

@@ -85,17 +85,15 @@ huione-pay-security-research/
 │   ├── mitm-proxy.py            ← MITM traffic capture
 │   └── requirements.txt
 │
-├── exploits/                    ← Proof-of-concept implementations
-│   ├── device-spoof.py          ← Device identity analysis PoC
-│   ├── permission-escalate.py   ← Permission escalation PoC
-│   ├── multisig-race.py         ← Race condition analysis
-│   └── withdraw-analysis.py     ← Withdrawal flow analysis
+├── exploits/                    ← Vulnerability research notes
+│   └── README.md                ← Index of vulnerability analyses
+│                                  (Full PoC in private evidence pack)
 │
-├── research/                    ← Reverse engineering research
-│   ├── dart-functions.md        ← Identified Dart functions
-│   ├── api-endpoints.md         ← Discovered API endpoints
-│   ├── encryption-layers.md     ← Encryption layer analysis
-│   └── blockchain-infra.md      ← Blockchain infrastructure map
+├── research/                    ← Detailed vulnerability writeups
+│   ├── vuln-device-identity.md  ← CVE-Pending: Device spoofing (CVSS 7.3)
+│   ├── vuln-multisig-race.md    ← CVE-Pending: Race condition (CVSS 9.0)
+│   ├── vuln-permission-model.md ← CVE-Pending: Permission bypass (CVSS 8.1)
+│   └── vuln-withdraw-address.md ← CVE-Pending: IDOR on address book (CVSS 9.1)
 │
 ├── infrastructure-proof/        ← Live infrastructure evidence
 │   ├── evidence-capture.json    ← Timestamped HTTP probe results
@@ -165,7 +163,8 @@ This research was conducted following responsible disclosure principles:
 - Findings submitted to relevant security organizations
 - No user data accessed or exfiltrated
 - Research conducted on isolated test environment
-- Proof-of-concept code included for verification only
+- Functional PoC code is kept in a private evidence package, shared only with vendor and authorities
+- Public repository contains sanitized research notes and methodology documentation
 
 **Disclosure timeline:** See [SECURITY.md](./SECURITY.md)
 
